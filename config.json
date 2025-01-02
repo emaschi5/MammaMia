@@ -35,10 +35,10 @@
         "DDLStream":{
             "domain":"co",
             "cookies" : {
-                "ips4_device_key": f9fcb988c8eb54e42d354becdd7b2040,
-                "ips4_IPSSessionFront": 84d7805c5a99a430d66262dbb91c1bb3,
-                "ips4_member_id": 4026345,
-                "ips4_login_key": 097fb909ef40089cfadde6eb24f80361
+                "ips4_device_key": "f9fcb988c8eb54e42d354becdd7b2040",
+                "ips4_IPSSessionFront": "84d7805c5a99a430d66262dbb91c1bb3",
+                "ips4_member_id": "4026345",
+                "ips4_login_key": "097fb909ef40089cfadde6eb24f80361"
                 },
             "enabled":"1"
         },
