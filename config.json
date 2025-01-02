@@ -29,7 +29,7 @@
         },
         "CB01":{
             "domain":"stream",
-            "CB_PROXY":"0",
+            "CB_PROXY":"1",
             "enabled":"1"
         },
         "DDLStream":{
