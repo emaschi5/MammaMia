@@ -2,7 +2,7 @@ name: Update Domains
 
 on:
   schedule:
-    - cron: "0 8 * * 5"  # Esegui alle 08:00 solo il venerdì (giorno 5 della settimana)
+    - cron: "0 8 * * *"  # Esegui alle 08:00 solo il venerdì (giorno 5 della settimana)
   workflow_dispatch:        # Permette di avviare manualmente il workflow
   push:
     branches:    
