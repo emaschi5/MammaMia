@@ -30,7 +30,7 @@
             "enabled": "1"
         },
         "CB01": {
-            "domain": "gold",
+            "domain": "loan",
             "CB_PROXY": "1",
             "CB_ForwardProxy": "0",
             "MX_ForwardProxy": "0",
@@ -76,7 +76,7 @@
             "enabled": "1"
         },
         "DaddyLiveHD": {
-            "domain": "to",
+            "domain": "mp",
             "enabled": "1"
         }
     },
