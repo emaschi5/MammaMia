@@ -1,7 +1,7 @@
 {
     "Siti": {
         "StreamingCommunity": {
-            "domain": "paris",
+            "domain": "lu",
             "SC_ForwardProxy": "0",
             "SC_PROXY": "0",
             "VX_ForwardProxy": "0",
@@ -30,7 +30,7 @@
             "enabled": "1"
         },
         "CB01": {
-            "domain": "media",
+            "domain": "loan",
             "CB_PROXY": "1",
             "CB_ForwardProxy": "0",
             "MX_ForwardProxy": "0",
@@ -72,11 +72,11 @@
             "AW_PROXY": "0"
         },
         "SkyStreaming": {
-            "domain": "digital",
+            "domain": "watch",
             "enabled": "1"
         },
         "DaddyLiveHD": {
-            "domain": "to",
+            "domain": "mp",
             "enabled": "1"
         }
     },
