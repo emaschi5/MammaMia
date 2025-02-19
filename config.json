@@ -1,94 +1,93 @@
 {
     "Siti": {
-           "StreamingCommunity": {
-               "domain": "lu",
-               "SC_ForwardProxy": "0",
-               "SC_PROXY": "1",
-               "VX_ForwardProxy": "0",
-               "VX_PROXY": "0",
-               "enabled": "1"
-           },
-           "Filmpertutti": {
-               "domain": "motorcycles",
-               "enabled": "1"
-           },
-           "Tantifilm":{
-               "domain": "bond",
-               "TF_ForwardProxy": "0",
-               "TF_PROXY": "1",
-               "enabled": "1"
-           },
-           "Mysterius":{
-               "enabled": "0"    
-           },
-          "LordChannel":{
-               "domain":"com",
-               "enabled":"1"
-          },
-          "StreamingWatch":{
-              "domain":"org",
-              "enabled":"1"
-          },
-          "CB01":{
-              "domain":"loan",
-              "CB_PROXY":"1",
-              "CB_ForwardProxy":"0",
-              "MX_ForwardProxy":"0",
-              "MX_PROXY":"0",
-              "enabled":"1"
-          },
-          "DDLStream":{
-              "domain":"co",
-              "cookies" : {
-                  "ips4_device_key": "f9fcb988c8eb54e42d354becdd7b2040",
-                  "ips4_IPSSessionFront": "f424597ceb0b0bee458cfbd2bc31da71",
-                  "ips4_member_id": "4026345",
-                  "ips4_login_key": "85dbda06fd520b89e7bd3044d4fe966e"
-                  },
-              "enabled":"1"
-          },
-          "Guardaserie":{
-              "domain":"mom",
-              "enabled":"1",
-              "GS_ForwardProxy":"0",
-              "GS_PROXY":"1"
-          },
-          "GuardaHD":{
-              "domain":"stream",
-              "enabled":"1",
-              "GH_ForwardProxy":"0",
-              "GH_PROXY":"1"
-          },
-          "Onlineserietv":{
-              "domain":"com",
-              "enabled":"1",
-              "OST_ForwardProxy":"0",
-              "OST_PROXY":"0"
-          },
-          "AnimeWorld":{
-              "domain":"so",
-              "enabled":"1",
-              "AW_ForwardProxy":"0",
-              "AW_PROXY":"0"
-          },
-          "SkyStreaming":{
-              "domain":"watch",
-              "enabled":"1"
-          },
-          "DaddyLiveHD":{
-              "domain":"mp",
-              "enabled":"1"
-          }
-   },
-   "General":{
-       "load_env": "0",
-       "HOST": "0.0.0.0",
-       "PORT": "8080",
-       "Name": "MammaMia",
-       "Icon": "🍕️",
-       "Public_Instance": "0",
-       "Remote_Instance": "1",
-       "Global_Proxy": "0"
-       }
-  }
-  
+        "StreamingCommunity": {
+            "domain": "lu",
+            "SC_ForwardProxy": "0",
+            "SC_PROXY": "1",
+            "VX_ForwardProxy": "0",
+            "VX_PROXY": "0",
+            "enabled": "1"
+        },
+        "Filmpertutti": {
+            "domain": "motorcycles",
+            "enabled": "1"
+        },
+        "Tantifilm": {
+            "domain": "bond",
+            "TF_ForwardProxy": "0",
+            "TF_PROXY": "1",
+            "enabled": "1"
+        },
+        "Mysterius": {
+            "enabled": "0"
+        },
+        "LordChannel": {
+            "domain": "com",
+            "enabled": "1"
+        },
+        "StreamingWatch": {
+            "domain": "org",
+            "enabled": "1"
+        },
+        "CB01": {
+            "domain": "loan",
+            "CB_PROXY": "1",
+            "CB_ForwardProxy": "0",
+            "MX_ForwardProxy": "0",
+            "MX_PROXY": "0",
+            "enabled": "1"
+        },
+        "DDLStream": {
+            "domain": "co",
+            "cookies": {
+                "ips4_device_key": "f9fcb988c8eb54e42d354becdd7b2040",
+                "ips4_IPSSessionFront": "f424597ceb0b0bee458cfbd2bc31da71",
+                "ips4_member_id": "4026345",
+                "ips4_login_key": "85dbda06fd520b89e7bd3044d4fe966e"
+            },
+            "enabled": "1"
+        },
+        "Guardaserie": {
+            "domain": "mom",
+            "enabled": "1",
+            "GS_ForwardProxy": "0",
+            "GS_PROXY": "1"
+        },
+        "GuardaHD": {
+            "domain": "stream",
+            "enabled": "1",
+            "GH_ForwardProxy": "0",
+            "GH_PROXY": "1"
+        },
+        "Onlineserietv": {
+            "domain": "com",
+            "enabled": "1",
+            "OST_ForwardProxy": "0",
+            "OST_PROXY": "0"
+        },
+        "AnimeWorld": {
+            "domain": "so",
+            "enabled": "1",
+            "AW_ForwardProxy": "0",
+            "AW_PROXY": "0"
+        },
+        "SkyStreaming": {
+            "domain": "watch",
+            "enabled": "1"
+        },
+        "DaddyLiveHD": {
+            "domain": "mp",
+            "enabled": "1"
+        }
+    },
+    "General": {
+        "load_env": "0",
+        "HOST": "0.0.0.0",
+        "PORT": "8080",
+        "Name": "MammaMia",
+        "Icon": "🍕️",
+        "Public_Instance": "0",
+        "Remote_Instance": "1",
+        "Global_Proxy": "0"
+    }
+}
