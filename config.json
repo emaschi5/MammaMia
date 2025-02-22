@@ -72,7 +72,7 @@
             "AW_PROXY": "0"
         },
         "SkyStreaming": {
-            "domain": "watch",
+            "domain": "cam",
             "enabled": "1"
         },
         "DaddyLiveHD": {
