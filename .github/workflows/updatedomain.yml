@@ -37,7 +37,19 @@ jobs:
           echo "Nessuna modifica trovata in config.json. Il commit non è necessario."
         else
           git commit -m "Aggiornamento domini in config.json"
-          git push
+          # Ottieni tutti i branch remoti
+          git fetch --all
+          # Per ogni branch, applica i cambiamenti e fai push
+          for branch in $(git branch -r | grep -v HEAD | grep -v main | sed 's/origin\///'); do
+            git checkout $branch
+            git checkout main -- config.json
+            git add config.json
+            git commit -m "Aggiornamento domini in config.json"
+            git push origin $branch
+          done
+          # Torna al branch principale e fai push
+          git checkout main
+          git push origin main
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
