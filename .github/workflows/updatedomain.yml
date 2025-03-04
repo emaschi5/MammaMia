@@ -1,9 +1,8 @@
 name: Update Domains
-
 on:
   schedule:
-    - cron: "0 8 * * *"  # Esegui alle 08:00 solo il venerdì (giorno 5 della settimana)
-  workflow_dispatch:        # Permette di avviare manualmente il workflow
+    - cron: "0 8 * * *"  # Esegui alle 08:00 ogni giorno
+  workflow_dispatch:      # Permette di avviare manualmente il workflow
   push:
     branches:    
       - '**'         # matches every branch 
@@ -11,58 +10,59 @@ on:
 jobs:
   update-domains:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
-
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.12'
-
+        
     - name: Install dependencies
       run: |
         pip install requests
+        
     - name: Update domains in config.json
       run: |
         python update_domains.py
-    - name: Commit and push changes
+        
+    - name: Commit and push changes to all branches
       run: |
         git config --global user.email "your-email@example.com"
         git config --global user.name "Your Name"
-
-        # Assicura di essere su main
-        git checkout main
         
-        # Controlla se ci sono modifiche locali non committate
-        if ! git diff --quiet; then
-          echo "Ci sono modifiche locali. Le committiamo prima di fare il pull."
-          git add config.json
-          git commit -m "Aggiornamento domini in config.json"
-        fi
-        
-        # Sincronizza il main con il remoto
-        git pull --rebase origin main
-        
-        # Spinge le modifiche su main
-        git push origin main
-
-        # Recupera tutti i branch remoti
+        # Ottieni lista di tutti i branch remoti senza il prefisso "origin/"
         git fetch --all
-
-        for branch in $(git branch -r | grep -v HEAD | sed 's/origin\///'); do
-          if [ "$branch" != "main" ]; then
-            echo "Aggiornamento del branch: $branch"
-            git checkout $branch || git checkout -b $branch origin/$branch
-            git pull --rebase origin $branch  # Sincronizza prima di unire
-            git merge main --no-edit          # Unisce le modifiche dal main
+        BRANCHES=$(git branch -r | grep -v '\->' | sed 's/origin\///')
+    
+        for branch in $BRANCHES
+        do
+          echo "Processing branch: $branch"
+    
+          # Controlla se il branch esiste localmente, altrimenti crealo
+          if git rev-parse --verify "$branch"; then
+            git checkout $branch
+          else
+            git checkout -b $branch origin/$branch
+          fi
+    
+          # Effettua il pull con rebase per evitare conflitti
+          git pull --rebase origin $branch || (echo "Rebase fallito, tentando un merge" && git pull origin $branch --no-rebase)
+    
+          # Esegui lo script per aggiornare config.json
+          python update_domains.py
+    
+          # Verifica se ci sono modifiche
+          if git diff --exit-code config.json; then
+            echo "No changes in config.json for branch $branch"
+          else
+            git add config.json
+            git commit -m "Aggiornamento domini in config.json"
             git push origin $branch
           fi
         done
-
-        # Torna su main alla fine
-        git checkout main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
