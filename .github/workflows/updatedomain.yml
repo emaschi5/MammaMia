@@ -27,6 +27,35 @@ jobs:
     - name: Update domains in config.json
       run: |
         python update_domains.py
+name: Update Domains
+
+on:
+  schedule:
+    - cron: "0 8 * * *"  # Esegui alle 08:00 solo il venerdì (giorno 5 della settimana)
+  workflow_dispatch:        # Permette di avviare manualmente il workflow
+  push:
+    branches:    
+      - '**'         # matches every branch 
+      
+jobs:
+  update-domains:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        pip install requests
+    - name: Update domains in config.json
+      run: |
+        python update_domains.py
     - name: Commit and push changes
       run: |
         git config --global user.email "your-email@example.com"
@@ -34,30 +63,35 @@ jobs:
 
         # Assicura di essere su main
         git checkout main
-        git pull --rebase origin main  # Sincronizza con il remoto
-
-        git add config.json
-        if git diff --staged --quiet; then
-          echo "Nessuna modifica trovata in config.json. Il commit non è necessario."
-        else
+        
+        # Controlla se ci sono modifiche locali non committate
+        if ! git diff --quiet; then
+          echo "Ci sono modifiche locali. Le committiamo prima di fare il pull."
+          git add config.json
           git commit -m "Aggiornamento domini in config.json"
-          git push origin main  # Push su main dopo il pull
-
-          # Recupera tutti i branch remoti
-          git fetch --all
-
-          for branch in $(git branch -r | grep -v HEAD | sed 's/origin\///'); do
-            if [ "$branch" != "main" ]; then
-              echo "Aggiornamento del branch: $branch"
-              git checkout $branch || git checkout -b $branch origin/$branch
-              git pull --rebase origin $branch  # Sincronizza prima di unire
-              git merge main --no-edit          # Unisce le modifiche dal main
-              git push origin $branch
-            fi
-          done
-
-          # Torna su main alla fine
-          git checkout main
         fi
+        
+        # Sincronizza il main con il remoto
+        git pull --rebase origin main
+        
+        # Spinge le modifiche su main
+        git push origin main
+
+        # Recupera tutti i branch remoti
+        git fetch --all
+
+        for branch in $(git branch -r | grep -v HEAD | sed 's/origin\///'); do
+          if [ "$branch" != "main" ]; then
+            echo "Aggiornamento del branch: $branch"
+            git checkout $branch || git checkout -b $branch origin/$branch
+            git pull --rebase origin $branch  # Sincronizza prima di unire
+            git merge main --no-edit          # Unisce le modifiche dal main
+            git push origin $branch
+          fi
+        done
+
+        # Torna su main alla fine
+        git checkout main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
