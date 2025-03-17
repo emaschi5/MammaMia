@@ -56,7 +56,7 @@ async def search(showname,date,client,ismovie,episode,season):
     'origin_id': '50141',
     'searchwp_live_search_client_nonce': 'undefined',
     }
-    response = await client.get(ForwardProxy + f"https://onlineserietv.{OST_DOMAIN}/wp-admin/admin-ajax.php", headers=headers, params=params, cookies=cookies, impersonate = "chrome124", proxies = proxies)
+    response = await client.get(ForwardProxy + f"https://onlineserietv.{OST_DOMAIN}/wp-admin/admin-ajax.php?s={showname.replace(' ','%20')}&action=searchwp_live_search&swpengine=default&swpquery={showname.replace(' ', '%20')}&origin_id=50141&searchwp_live_search_client_nonce=undefined", headers=headers, cookies=cookies, impersonate = "chrome124", proxies = proxies)
     if response.status_code != 200:
         print("IP Blocked by OnlineserieTV",response)
     soup = BeautifulSoup(response.text, 'lxml', parse_only=SoupStrainer('a'))
@@ -74,8 +74,8 @@ async def search(showname,date,client,ismovie,episode,season):
                     pattern = r'https://uprot\.net/fxf/[^\s"<>]+'
                     match = re.search(pattern, response.text)
                     if match:
-                        name = a_tag.text
-                        flexy_link = match.group(1)
+                        name = a_tag.text.replace("\t","").replace("\n","")
+                        flexy_link = match.group()
                         return flexy_link,name
                     else:
                         print("No flexy link found.")
@@ -134,7 +134,7 @@ async def onlineserietv(id,client):
 async def test_animeworld():
     from curl_cffi.requests import AsyncSession
     async with AsyncSession() as client:
-        test_id = "tt9165438:1:1"  # This is an example ID format
+        test_id = "tt9218128"  # This is an example ID format
         results = await onlineserietv(test_id, client)
         print(results)
 
