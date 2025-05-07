@@ -1,7 +1,7 @@
 {
     "Siti": {
         "StreamingCommunity": {
-            "url": "https://streamingcommunity.exposed",
+            "url": "https://streamingcommunity.education",
             "SC_ForwardProxy": "0",
             "SC_PROXY": "0",
             "VX_ForwardProxy": "0",
@@ -48,7 +48,7 @@
             "enabled": "1"
         },
         "Guardaserie": {
-            "url": "https://guardaserietv.sbs",
+            "url": "https://guardaserietv.art",
             "enabled": "1",
             "GS_ForwardProxy": "0",
             "GS_PROXY": "1"
