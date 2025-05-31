@@ -1,7 +1,7 @@
 {
     "Siti": {
         "StreamingCommunity": {
-            "url": "https://streamingunity.to",
+            "url": "https://streamingunity.blog",
             "SC_ForwardProxy": "0",
             "SC_PROXY": "0",
             "VX_ForwardProxy": "0",
@@ -72,7 +72,7 @@
             "AW_PROXY": "1"
         },
         "SkyStreaming": {
-            "url": "https://skystreaming.stream",
+            "url": "https://skystreaming.yoga",
             "enabled": "1"
         },
         "DaddyLiveHD": {
